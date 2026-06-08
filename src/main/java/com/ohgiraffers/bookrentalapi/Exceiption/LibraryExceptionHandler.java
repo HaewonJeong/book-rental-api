@@ -80,11 +80,11 @@ public class LibraryExceptionHandler {
             BookAlreadyRentedException exception,
             HttpServletRequest request){
         ErrorResponse response = new ErrorResponse(
-                HttpStatus.CONFLICT.value(),
-                HttpStatus.CONFLICT.name(),
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.name(),
                 exception.getMessage()
         );
-        return ResponseEntity.status(HttpStatus.CONFLICT ).body(response);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST ).body(response);
     }
 
     @ExceptionHandler(IllegalArgumentException.class)

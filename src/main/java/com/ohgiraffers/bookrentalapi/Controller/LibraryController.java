@@ -246,9 +246,9 @@ public class LibraryController {
     @PatchMapping("/rentals/{rentalNo}/return")
         @Operation(summary = "도서 반납",  description = "대여 번호를 통해 해당하는 대여 도서를 반납 합니다.")
         @ApiResponses({
-                @ApiResponse(responseCode = "201", description = "도서 반납 성공"),
+                @ApiResponse(responseCode = "204", description = "도서 반납 성공"),
                 @ApiResponse(responseCode = "404", description = "회원/도서 정보 없음"),
-                @ApiResponse(responseCode = "409", description = "도서가 대여중")
+                @ApiResponse(responseCode = "400", description = "이미 반납된 대여")
         })
     public ResponseEntity<Void> registrental(@PathVariable int rentalNo) {
 
@@ -278,7 +278,7 @@ public class LibraryController {
 
     //4. 대여 목록 조회 (테스트)
     @GetMapping("/rentals")
-        @Operation(summary = "회원 목록 조회/검색(테스트)",  description = "전체 회원을 조회하거나 rentalNo query string으로 대여 건을 검색한다.")
+        @Operation(summary = "대여 목록 조회/검색(테스트)",  description = "전체 대여를 조회하거나 rentalNo query string으로 대여 건을 검색한다.")
         @ApiResponses({
                 @ApiResponse(responseCode = "200", description = "대여 목록 조회 성공")
         })
